@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WebView App</title>
+
+
+    <script type="text/javascript" src="https://appx/web-view.min.js"></script>
+
+  </head>
+
+  <body style="background-color: white">
+
+    <button onclick="sendMessage()">Click me</button>
+    <div>
+      <code>status</code> 
+      <code id="status"></code>
+  
+    </div>
+    <div>
+
+      <code>message</code> 
+      <code id="mpMessage"></code>
+      
+    </div>
+    
+  </body>
+
+  <script>
+    
+    const sendMessage = () => {
+      my.postMessage({name:"test web-view"});
+      document.getElementById("status").innerHTML = "sent";
+
+    }
+
+    my.onMessage = (e) => {
+      let messageJson = JSON.stringify(e)
+      document.getElementById("mpMessage").innerHTML = messageJson;
+    }
+  </script>
+</html>
